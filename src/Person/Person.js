@@ -3,10 +3,10 @@ import React from "react";
 const person = props => {
   return (
     <div>
-      <p>
+      <p onClick={props.switch}>
         I am a {props.name} and {props.age} years old
       </p>
-      <p>{props.children}</p>
+      <p onClick={props.switch}>{props.children}</p>
     </div>
   );
 };
