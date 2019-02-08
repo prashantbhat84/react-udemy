@@ -1,28 +1,68 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+import "./App.css";
+import Person from "./Person/Person";
 
-export default App;
+const app = props => {
+  const [personsState, setPersonsState] = useState({
+    persons: [
+      {
+        name: "rohidas",
+        age: 23
+      },
+      {
+        name: "Aai",
+        age: 50
+      },
+      {
+        name: "Aadrita",
+        age: 3
+      }
+    ]
+  });
+  const [otherState, setOtherState] = useState("some    value");
+  console.log(personsState, otherState);
+  const switchNameHandler = () => {
+    //console.log("Was Clicked");
+    setPersonsState({
+      persons: [
+        {
+          name: "roh",
+          age: 23
+        },
+        {
+          name: "Aai",
+          age: 50
+        },
+        {
+          name: "Aadrita",
+          age: 2
+        }
+      ]
+    });
+    setOtherState("some other value");
+  };
+  return (
+    <div className="App">
+      <h1> This is my first React app!!</h1>
+      <p> this is a new app</p>
+      <button onClick={switchNameHandler}>Switch Name</button>
+      <Person
+        name={personsState.persons[0].name}
+        age={personsState.persons[0].age}
+      />
+      <Person
+        name={personsState.persons[1].name}
+        age={personsState.persons[1].age}
+      >
+        My Hobbies: racing
+      </Person>
+      <Person
+        name={personsState.persons[2].name}
+        age={personsState.persons[2].age}
+      />
+    </div>
+  );
+};
+
+export default app;
